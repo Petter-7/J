@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacquie ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#ff4d6d,#ff758f,#ffc2d1);
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ========================= */
+/* Pantalla de Bienvenida    */
+/* ========================= */
+
+#welcome{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:rgba(0,0,0,.15);
+    backdrop-filter:blur(8px);
+    color:white;
+    z-index:999;
+    transition:1s;
+}
+
+#welcome h2{
+    font-size:30px;
+    font-weight:300;
+}
+
+#welcome h1{
+    font-size:65px;
+    margin:20px 0;
+    text-shadow:0 0 15px rgba(0,0,0,.4);
+}
+
+#welcome button{
+    padding:15px 40px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    font-size:18px;
+    color:#ff4d6d;
+    font-weight:bold;
+    background:white;
+    transition:.3s;
+}
+
+#welcome button:hover{
+    transform:scale(1.1);
+}
+
+/* ========================= */
+/* Carta                     */
+/* ========================= */
+
+#contenido{
+    display:none;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:100%;
+}
+
+.card{
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    width:80%;
+    max-width:650px;
+    box-shadow:0 0 30px rgba(0,0,0,.3);
+    animation:aparecer 1.5s;
+}
+
+.card h1{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.card p{
+    font-size:20px;
+    line-height:1.8;
+}
+
+.card button{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.card button:hover{
+    transform:scale(1.1);
+}
+
+/* ========================= */
+/* Pétalos                   */
+/* ========================= */
+
+.petal{
+    position:absolute;
+    top:-60px;
+    pointer-events:none;
+    animation:caer linear forwards;
+    z-index:1;
+}
+
+@keyframes caer{
+    0%{
+        transform:translateY(-100px) translateX(0px) rotate(0deg);
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(110vh) translateX(120px) rotate(720deg);
+        opacity:.2;
+    }
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Bienvenida -->
+
+<div id="welcome">
+
+    <h2>Hola</h2>
+
+    <h1>Jacqui ❤️</h1>
+
+    <button onclick="entrar()">
+        Entrar 🌹
+    </button>
+
+</div>
+
+<!-- Carta -->
+
+<div id="contenido">
+
+    <div class="card">
+
+        <h1>❤️ Para Ti ❤️</h1>
+
+        <p>
+
+            Desde que llegaste a mi vida todo es más bonito.
+            Gracias por cada sonrisa, por cada momento y por
+            hacer que incluso los días difíciles valgan la pena.
+
+            <br><br>
+
+            No importa cuánto pase el tiempo...
+            siempre voy a elegir caminar contigo.
+
+            💕
+
+        </p>
+
+        <button onclick="mensaje()">
+            Presiona aquí 💖
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+// Entrar
+
+function entrar(){
+
+    const welcome=document.getElementById("welcome");
+
+    welcome.style.opacity="0";
+
+    setTimeout(()=>{
+
+        welcome.style.display="none";
+
+        document.getElementById("contenido").style.display="flex";
+
+    },1000);
+
+}
+
+// Mensaje
+
+function mensaje(){
+
+    alert("❤️ Te amo muchísimo. Gracias por existir y por hacer mi vida tan feliz. ❤️");
+
+}
+
+// Crear pétalos
+
+function crearPetalo(){
+
+    const petalo=document.createElement("div");
+
+    petalo.classList.add("petal");
+
+    petalo.innerHTML="🌹";
+
+    petalo.style.left=Math.random()*100+"vw";
+
+    petalo.style.fontSize=(18+Math.random()*20)+"px";
+
+    petalo.style.animationDuration=(6+Math.random()*5)+"s";
+
+    document.body.appendChild(petalo);
+
+    setTimeout(()=>{
+
+        petalo.remove();
+
+    },11000);
+
+}
+
+setInterval(crearPetalo,250);
+
+</script>
+
+</body>
+</html>
